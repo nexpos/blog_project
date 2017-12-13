@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog Project</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="/posts">
+        <img class="logo" alt="Brand" src="https://www.fantasyflixleague.com/landing/images/logo.png">
+        </a>
+        </div>
+        <h1 class="navbar-text">The Board Room</h1>
+        <div class="navbar-left">
+          <%= link_to 'New Post', new_post_path, class: "btn-lg btn-success" %>
+        </div>
+        <div class="navbar-right">
+          <% if user_signed_in? %>
+          Welcome, <%= current_user.username %>!
+          <%= image_tag current_user.avatar.url, size: 30 %>
+           <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-warning" %>
+           <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </nav>
+
+
+
+    <div class="container">
+    <%= yield %>
+    </div>
+
+  </body>
+
+
+
+  <footer>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="https://www.facebook.com/fantasyflixleague" alt="Facbook Link"><i class="fa fa-facebook-official" style="font-size:36px"></i></a></li> |
+      <li class="list-inline-item"><a href="https://twitter.com/fantasyflix"><i class="fa fa-twitter" style="font-size:36px"></i></li>
+    </ul>
+    </footer>
+
+</html>

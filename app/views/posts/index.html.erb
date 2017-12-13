@@ -1,0 +1,30 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+<% @posts.each do |post| %>
+  <div class="col-sm-6 col-md-12">
+    <div class="panel">
+
+      <div class="panel-heading">
+        <div id="title"><%= post.title %></div>
+        <div><%= post.created_at.strftime("%b %g, %G") %></div>
+      </div>
+
+      <div class="panel-body">
+        <div id="author"> By <%= post.user.username %> | <%= image_tag post.user.avatar.url, size: 30 %></div>
+        <div><%= post.blog_entry %></div>
+      </div>
+
+      <div class="panel-footer">
+        <div class="btn-group" role="group">
+          <%=link_to 'Show', post, class: "btn btn-default"%>
+          <%= link_to 'Edit', edit_post_path(post), class: "btn btn-default" %>
+          <%= link_to 'Destroy', post, class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>
+
+</div>
